@@ -1,3 +1,5 @@
+<a href="https://codeclimate.com/github/Journerist/e-commerce-scs/maintainability"><img src="https://api.codeclimate.com/v1/badges/8697b17d86da97ba789c/maintainability" /></a> <a href="https://codeclimate.com/github/Journerist/e-commerce-scs/test_coverage"><img src="https://api.codeclimate.com/v1/badges/8697b17d86da97ba789c/test_coverage" /></a>
+
 # e-commerce-scs
 Experimental implementation of a service based e-commerce implementation. Sub-Domains can be implemented using a small monolith approach, a micro-service based approach or something in between.
 
