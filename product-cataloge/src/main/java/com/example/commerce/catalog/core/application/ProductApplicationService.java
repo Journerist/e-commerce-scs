@@ -16,17 +16,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductApplicationService {
 
-	private final ProductRepository productRepository;
+    private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
-	
-	public Set<ProductDTO> getAllAvailableProducts() {
-		return productRepository.findAll().stream()
-			.map(this::toProductDTO)
-			.collect(Collectors.toSet());
-	}
-	
-	private ProductDTO toProductDTO(Product product) {
-		return modelMapper.map(product, ProductDTO.class);
-	}
-	
+
+    public Set<ProductDTO> getAllAvailableProducts() {
+        return productRepository.findAll().stream().map(this::toProductDTO).collect(Collectors.toSet());
+    }
+
+    private ProductDTO toProductDTO(Product product) {
+        return modelMapper.map(product, ProductDTO.class);
+    }
+
 }

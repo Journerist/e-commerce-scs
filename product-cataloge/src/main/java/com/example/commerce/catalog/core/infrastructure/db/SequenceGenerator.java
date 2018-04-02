@@ -12,14 +12,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class SequenceGenerator {
-	
-	private final MongoOperations mongo;
 
-	public long getNextSequence(String seqName) {
-		Query query = new Query();
-		query.addCriteria(Criteria.where("_id").is(seqName));
-		CustomSequence counter = mongo.findAndModify(query, new Update().inc("seq", 1), FindAndModifyOptions.options().returnNew(true).upsert(true), CustomSequence.class);
-		return counter.getSeq();
-	}
+    private final MongoOperations mongo;
+
+    public long getNextSequence(String seqName) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(seqName));
+        CustomSequence counter = mongo.findAndModify(query, new Update().inc("seq", 1),
+                FindAndModifyOptions.options().returnNew(true).upsert(true), CustomSequence.class);
+        return counter.getSeq();
+    }
 
 }

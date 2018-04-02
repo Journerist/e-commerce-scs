@@ -24,33 +24,34 @@ import com.example.commerce.catalog.core.interfaces.controller.GreetingControlle
 import com.example.commerce.catalog.sample.data.SampleProductData;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = { WebMvcConfig.class, GreetingController.class, ProductApplicationService.class, SampleProductData.class, SequenceGenerator.class, CustomerFactory.class})
+@ComponentScan(basePackageClasses = { WebMvcConfig.class, GreetingController.class, ProductApplicationService.class,
+        SampleProductData.class, SequenceGenerator.class, CustomerFactory.class })
 @EnableMongoRepositories("com.example.commerce.catalog.core.domain.entity.product")
 @EnableMongoHttpSession
 public class DemoApplication {
 
-	@Autowired
+    @Autowired
     private Environment env;
-	
-	private static Logger log = LoggerFactory.getLogger(DemoApplication.class);
-	
-	@PostConstruct
+
+    private static Logger log = LoggerFactory.getLogger(DemoApplication.class);
+
+    @PostConstruct
     public void beforeStartup() throws Exception {
-		if(env.acceptsProfiles("dev")) {
-			log.info("Dev profile is active, check if there is a running kafka server...");
-			IntegratedKafkaServer.startIfNoServerIsRunning();
-		}
+        if (env.acceptsProfiles("dev")) {
+            log.info("Dev profile is active, check if there is a running kafka server...");
+            IntegratedKafkaServer.startIfNoServerIsRunning();
+        }
     }
-	
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
-	
-	@Bean
-	public ModelMapper modelMapper() {
-		ModelMapper mm = new ModelMapper();
-		mm.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
-	    return mm;
-	}
-	
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper mm = new ModelMapper();
+        mm.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+        return mm;
+    }
+
 }

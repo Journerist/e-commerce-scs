@@ -8,15 +8,15 @@ import lombok.EqualsAndHashCode;
 import lombok.Value;
 
 @Value
-@EqualsAndHashCode(callSuper = false, of={"sku"})
+@EqualsAndHashCode(callSuper = false, of = { "sku" })
 @Builder
-public class Product extends AbstractAggregateRoot<Product>{
+public class Product extends AbstractAggregateRoot<Product> {
 
-	@Id
-	private final String sku;
-	private final String name;
-	private final Price price;
-	private final ProductCategory productCategory;
-	private final boolean available;
-	
+    @Id
+    private final String sku;
+    private final String name;
+    private final Price price;
+    private final ProductCategory productCategory;
+    private final boolean available;
+
 }

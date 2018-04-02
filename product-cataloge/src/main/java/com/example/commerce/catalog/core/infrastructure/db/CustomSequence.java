@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class CustomSequence {
-	@Id
-	private String id;
-	private long seq;
+    @Id
+    private String id;
+    private long seq;
 }

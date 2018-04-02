@@ -8,12 +8,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false, of={"id"})
+@EqualsAndHashCode(callSuper = false, of = { "id" })
 @AllArgsConstructor
 public class Customer extends AbstractAggregateRoot<Customer> {
-	
-	@Id
-	private long id;
-	private boolean guest;
+
+    @Id
+    private long id;
+    private boolean guest;
 
 }

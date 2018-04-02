@@ -10,10 +10,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CustomerFactory {
 
-	private final SequenceGenerator sequenceGenerator;
-	
-	public Customer createNew() {
-		return new Customer(sequenceGenerator.getNextSequence("customer"), true);
-	}
-	
+    private final SequenceGenerator sequenceGenerator;
+
+    public Customer createNew() {
+        return new Customer(sequenceGenerator.getNextSequence("customer"), true);
+    }
+
 }

@@ -9,7 +9,7 @@ import lombok.Value;
 @Builder
 public class Price {
 
-	private final BigDecimal amount;
-	private final String currency;
-	
+    private final BigDecimal amount;
+    private final String currency;
+
 }

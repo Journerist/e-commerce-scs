@@ -10,13 +10,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false, of={"id"})
+@EqualsAndHashCode(callSuper = false, of = { "id" })
 @AllArgsConstructor
 public class Basket extends AbstractAggregateRoot<Basket> {
 
-	@Id
-	private String id;
-	private List<String> productSkus;
-	private String customerId;
-	
+    @Id
+    private String id;
+    private List<String> productSkus;
+    private String customerId;
+
 }

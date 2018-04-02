@@ -19,15 +19,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GreetingController {
 
-	private final ProductApplicationService productAS;
-	
-	@GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model, HttpSession session) {
-        
-		model.addAttribute("customerId", String.valueOf(session.getAttribute("customerId")));
-		model.addAttribute("products", productAS.getAllAvailableProducts());
-		model.addAttribute("name", name);
-		
+    private final ProductApplicationService productAS;
+
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
+            Model model, HttpSession session) {
+
+        model.addAttribute("customerId", String.valueOf(session.getAttribute("customerId")));
+        model.addAttribute("products", productAS.getAllAvailableProducts());
+        model.addAttribute("name", name);
+
         return "greeting";
     }
 

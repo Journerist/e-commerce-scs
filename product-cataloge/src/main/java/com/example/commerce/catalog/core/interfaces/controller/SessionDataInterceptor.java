@@ -21,26 +21,26 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SessionDataInterceptor extends HandlerInterceptorAdapter {
 
-	private final CustomerFactory customerFactory;
+    private final CustomerFactory customerFactory;
 
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+            ModelAndView modelAndView) throws Exception {
 
-		HttpSession session = request.getSession();
-		Optional<Object> sessionCustomerId = Optional.ofNullable(session.getAttribute("customerId"));
+        HttpSession session = request.getSession();
+        Optional<Object> sessionCustomerId = Optional.ofNullable(session.getAttribute("customerId"));
 
-		if (!sessionCustomerId.isPresent()) {
-			Customer customer = customerFactory.createNew();
-			long customerId = customer.getId();
-			session.setAttribute("customerId", customerId);
-		} else {
-			session.setAttribute("customerId", (long) sessionCustomerId.get());
-		}
-		modelAndView.getModel().put("sessionId", session.getId());
-		modelAndView.getModel().put("customerId", session.getAttribute("customerId"));
+        if (!sessionCustomerId.isPresent()) {
+            Customer customer = customerFactory.createNew();
+            long customerId = customer.getId();
+            session.setAttribute("customerId", customerId);
+        } else {
+            session.setAttribute("customerId", (long) sessionCustomerId.get());
+        }
+        modelAndView.getModel().put("sessionId", session.getId());
+        modelAndView.getModel().put("customerId", session.getAttribute("customerId"));
 
-		super.postHandle(request, response, handler, modelAndView);
-	}
+        super.postHandle(request, response, handler, modelAndView);
+    }
 
 }

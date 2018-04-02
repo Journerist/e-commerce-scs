@@ -12,11 +12,11 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-	  private final SessionDataInterceptor sessionDataInterceptor;
+    private final SessionDataInterceptor sessionDataInterceptor;
 
-	  @Override
-	  public void addInterceptors(InterceptorRegistry registry) {
-	    registry.addInterceptor(sessionDataInterceptor);
-	  }
-	
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(sessionDataInterceptor);
+    }
+
 }

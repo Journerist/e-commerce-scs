@@ -13,42 +13,22 @@ import com.example.commerce.catalog.core.domain.entity.product.ProductRepository
 @Component
 public class SampleProductData {
 
-	private final ProductRepository productRepository;
-	
-	@Autowired
-	public SampleProductData(ProductRepository productRepository) {
-		this.productRepository = productRepository;
-		fillDatabase();
-	}
+    private final ProductRepository productRepository;
 
-	public void fillDatabase() {
-		productRepository.save(
-				Product.builder()
-					.sku("SKU1")
-					.available(true)
-					.name("ABC Jeans")
-					.productCategory(ProductCategory.CLOTH)
-					.price(
-							Price.builder()
-								.amount(new BigDecimal("10.00"))
-								.currency("EUR")
-								.build())
-					.build()
-		);
-		
-		productRepository.save(
-				Product.builder()
-					.sku("SKU2")
-					.available(true)
-					.name("ABC Shorts")
-					.productCategory(ProductCategory.CLOTH)
-					.price(
-							Price.builder()
-								.amount(new BigDecimal("15.99"))
-								.currency("EUR")
-								.build())
-					.build()
-		);
-	}
-	
+    @Autowired
+    public SampleProductData(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+        fillDatabase();
+    }
+
+    public void fillDatabase() {
+        productRepository.save(
+                Product.builder().sku("SKU1").available(true).name("ABC Jeans").productCategory(ProductCategory.CLOTH)
+                        .price(Price.builder().amount(new BigDecimal("10.00")).currency("EUR").build()).build());
+
+        productRepository.save(
+                Product.builder().sku("SKU2").available(true).name("ABC Shorts").productCategory(ProductCategory.CLOTH)
+                        .price(Price.builder().amount(new BigDecimal("15.99")).currency("EUR").build()).build());
+    }
+
 }

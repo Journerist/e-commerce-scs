@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 public class PriceDTO {
-	private BigDecimal amount;
-	private String currency;
+    private BigDecimal amount;
+    private String currency;
 }
