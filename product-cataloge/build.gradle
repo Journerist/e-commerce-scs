@@ -15,9 +15,9 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.example.commerce.product_catalog'
+group = 'com.example.commerce'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 9
 
 repositories {
 	mavenCentral()
@@ -25,9 +25,20 @@ repositories {
 
 
 dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-mustache')
+	compile('org.springframework.boot:mustache-spring-view')
+	
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.kafka:spring-kafka')
+	compile('org.springframework.kafka:spring-kafka-test')
+	compile('org.springframework.session:spring-session-data-mongodb')
+	
+	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+	compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.3'
+
+	compileOnly('org.projectlombok:lombok')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p>Hello, {{name}}</p>
+    <p>session id: {{sessionId}}</p>
+    <p>customer id: {{customerId}}</p>
+    
+    <div><h1>Products</h1></div>
+    {{#products}}
+    	<ul>
+    		<li>SKU: {{sku}}</li>
+    		<li>Name: {{name}}</li>
+    	</ul>
+    {{/products}}
+</body>
+</html>
