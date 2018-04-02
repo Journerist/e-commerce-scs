@@ -1,7 +1,5 @@
 package com.example.commerce.catalog.core.interfaces.controller;
 
-import java.util.Optional;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -10,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.commerce.catalog.core.application.ProductApplicationService;
-import com.example.commerce.catalog.core.domain.entity.customer.Customer;
-import com.example.commerce.catalog.core.domain.entity.customer.CustomerFactory;
 
 import lombok.RequiredArgsConstructor;
 

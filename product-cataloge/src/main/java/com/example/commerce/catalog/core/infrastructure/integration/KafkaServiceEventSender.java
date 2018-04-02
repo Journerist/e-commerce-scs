@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -20,16 +21,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class KafkaServiceEventSender {
 
     private final KafkaOperations<String, String> kafka;
 //    private final ObjectMapper mapper;
-
-    @Autowired
-    public KafkaServiceEventSender(KafkaOperations<String, String> kafka, ObjectMapper mapper) {
-        this.kafka = kafka;
-//        this.mapper = mapper;
-    }
 
     /**
      * TODO: remove this on listener because it sends all events to kafka. Only a
@@ -38,16 +34,15 @@ public class KafkaServiceEventSender {
      * @param event
      */
     @EventListener
-    void on(Object event) {
+    public void on(Object event) {
         log.info("Send service event: " + event);
         send(event);
     }
 
     private void send(Object event) {
-        String payload;
-        payload = "static data";// mapper.writeValueAsString(event);
+        String payload = event.getClass().getName();
         kafka.send("test", payload);
-        log.info("Publishing {} to Kafka�", payload);
+        log.info("Publishing {} to Kafka", payload);
     }
 
 }
