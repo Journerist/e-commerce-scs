@@ -23,12 +23,12 @@ import lombok.extern.slf4j.Slf4j;
 public class KafkaServiceEventSender {
 
     private final KafkaOperations<String, String> kafka;
-    private final ObjectMapper mapper;
+//    private final ObjectMapper mapper;
 
     @Autowired
     public KafkaServiceEventSender(KafkaOperations<String, String> kafka, ObjectMapper mapper) {
         this.kafka = kafka;
-        this.mapper = mapper;
+//        this.mapper = mapper;
     }
 
     /**
@@ -47,7 +47,7 @@ public class KafkaServiceEventSender {
         String payload;
         payload = "static data";// mapper.writeValueAsString(event);
         kafka.send("test", payload);
-        log.info("Publishing {} to Kafka…", payload);
+        log.info("Publishing {} to Kafkaï¿½", payload);
     }
 
 }
