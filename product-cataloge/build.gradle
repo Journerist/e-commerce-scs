@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.0.RELEASE'
+		springBootVersion = '2.0.1.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -25,14 +25,24 @@ repositories {
 
 
 dependencies {
+	// health checks and metrics
 	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.springframework.boot:spring-boot-starter-mustache')
-	compile('org.springframework.boot:mustache-spring-view')
 	
+	// persistence
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	
+	// web mvc + mustache templating
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-mustache')
+	
+	// messaging
 	compile('org.springframework.kafka:spring-kafka')
+	
+	// start kafka and zookeeper if profile = dev
 	compile('org.springframework.kafka:spring-kafka-test')
+	compile('log4j:log4j:1.2.17') // dependency bug, force log4j version to 1.2.17
+	
+	// session management in mongodb
 	compile('org.springframework.session:spring-session-data-mongodb')
 	
 	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
@@ -42,4 +52,6 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+	
+	
 }
