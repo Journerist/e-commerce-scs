@@ -1,2 +1,5 @@
 language: java
 before_script: cd product-catalog
+
+jdk:
+  - oraclejdk9
