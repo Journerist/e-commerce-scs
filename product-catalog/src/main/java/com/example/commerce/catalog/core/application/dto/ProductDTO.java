@@ -1,12 +1,12 @@
 package com.example.commerce.catalog.core.application.dto;
 
-import lombok.Data;
+import lombok.Value;
 
-@Data
-public class ProductDTO {
-    private String sku;
-    private String name;
-    private PriceDTO price;
-    private String productCategory;
-    private boolean available;
+@Value
+public final class ProductDTO {
+    private final String sku;
+    private final String name;
+    private final PriceDTO price;
+    private final String productCategory;
+    private final boolean available;
 }

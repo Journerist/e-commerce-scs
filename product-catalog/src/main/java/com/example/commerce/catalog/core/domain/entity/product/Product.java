@@ -10,7 +10,7 @@ import lombok.Value;
 @Value
 @EqualsAndHashCode(callSuper = false, of = { "sku" })
 @Builder
-public class Product extends AbstractAggregateRoot<Product> {
+public final class Product extends AbstractAggregateRoot<Product> {
 
     @Id
     private final String sku;
