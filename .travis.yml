@@ -1,6 +1,7 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=e18ecbd7a16ae3fcd8e3b8db2e2e0247fef1af7ff004a09f77af779dfb2e954c
+    - CODACY_PROJECT_TOKEN=e8bc9f77352b404286fea62867eed90b
 
 language: java
 
@@ -21,6 +22,10 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+
+script:
+  - gradlew check
+  - gradlew sendCoverageToCodacy
 
 after_script:
   - cp ./build/reports/jacoco/test/jacocoTestReport.xml ./src/main/java/
