@@ -23,7 +23,9 @@ before_script:
   - ./cc-test-reporter before-build
 
 after_script:
-  - cp ./build/reports/jacoco/test/jacocoTestReport.xml ./
+  - cp ./build/reports/jacoco/test/jacocoTestReport.xml ./src/main/java/
+  - mv ./cc-test-reporter ./src/main/java/cc-test-reporter
+  - cd ./src/main/java/
   - mv jacocoTestReport.xml jacoco.xml
   - ./cc-test-reporter after-build -t jacoco --exit-code $TRAVIS_TEST_RESULT
 
