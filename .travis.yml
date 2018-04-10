@@ -3,6 +3,19 @@ env:
     - CC_TEST_REPORTER_ID=e18ecbd7a16ae3fcd8e3b8db2e2e0247fef1af7ff004a09f77af779dfb2e954c
 
 language: java
+
+jdk:
+  - oraclejdk9
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
 before_script: 
   - cd product-catalog
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -11,7 +24,6 @@ before_script:
 
 after_script:
   - cp ./build/reports/jacoco/test/jacocoTestReport.xml ./
+  - mv jacocoTestReport.xml jacoco.xml
   - ./cc-test-reporter after-build -t jacoco --exit-code $TRAVIS_TEST_RESULT
 
-jdk:
-  - oraclejdk9
