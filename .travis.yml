@@ -24,8 +24,8 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - gradle check
-  - gradle sendCoverageToCodacy
+  - ./gradlew check
+  - ./gradlew sendCoverageToCodacy
 
 after_script:
   - cp ./build/reports/jacoco/test/jacocoTestReport.xml ./src/main/java/
