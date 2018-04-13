@@ -2,11 +2,15 @@ package com.example.commerce.catalog.core.application.dto;
 
 import java.math.BigDecimal;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Value;
+import lombok.NoArgsConstructor;
 
-@Value
+//model mapper requires args constructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public final class PriceDTO {
-    private final BigDecimal amount;
-    private final String currency;
+    private BigDecimal amount;
+    private String currency;
 }

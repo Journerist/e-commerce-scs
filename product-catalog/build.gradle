@@ -18,7 +18,7 @@ apply plugin: "jacoco"
 
 group = 'com.example.commerce'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 9
+sourceCompatibility = 8
 
 repositories {
 	mavenCentral()

@@ -1,12 +1,17 @@
 package com.example.commerce.catalog.core.application.dto;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+// model mapper requires args constructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public final class ProductDTO {
-    private final String sku;
-    private final String name;
-    private final PriceDTO price;
-    private final String productCategory;
-    private final boolean available;
+    private String sku;
+    private String name;
+    private PriceDTO price;
+    private String productCategory;
+    private boolean available;
 }
