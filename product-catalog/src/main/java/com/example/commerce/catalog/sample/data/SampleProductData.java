@@ -22,13 +22,14 @@ public class SampleProductData {
     }
 
     public void fillDatabase() {
-        productRepository.save(
-                Product.builder().sku("SKU1").available(true).name("ABC Jeans").productCategory(ProductCategory.CLOTH)
-                        .price(Price.builder().amount(new BigDecimal("10.00")).currency("EUR").build()).build());
-
-        productRepository.save(
-                Product.builder().sku("SKU2").available(true).name("ABC Shorts").productCategory(ProductCategory.CLOTH)
-                        .price(Price.builder().amount(new BigDecimal("15.99")).currency("EUR").build()).build());
+	    	createProduct("SKU1", "ABC Jeans", "10.00");
+	    	createProduct("SKU2", "ABC Shorts", "15.99");
     }
+
+	private void createProduct(String sku, String name, String price) {
+		productRepository.save(
+                Product.builder().sku(sku).available(true).name(name).productCategory(ProductCategory.CLOTH)
+                        .price(Price.builder().amount(new BigDecimal(price)).currency("EUR").build()).build());
+	}
 
 }
