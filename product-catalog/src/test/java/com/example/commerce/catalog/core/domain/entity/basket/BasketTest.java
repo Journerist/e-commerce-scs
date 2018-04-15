@@ -16,7 +16,7 @@ import com.example.commerce.catalog.core.domain.entity.product.ProductCategory;
 
 public class BasketTest {
 
-	private static final String CUSTOMER_ID = "CustomerId";
+	private static final long CUSTOMER_ID = 1L;
 	private Basket basket;
 	private static final Product product = Product.builder()
 			.sku("sku")

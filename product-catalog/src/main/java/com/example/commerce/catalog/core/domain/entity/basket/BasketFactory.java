@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class BasketFactory {
 
-	public static Basket createEmptyBasketFor(String customerId, String currency) {
+	public static Basket createEmptyBasketFor(long customerId, String currency) {
 		return new Basket(UUID.randomUUID().toString(), Collections.emptyList(), customerId, currency);
 	}
 }

@@ -7,13 +7,13 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.example.commerce.catalog.core.domain.entity.basket.Basket.ProductNotFound;
+import com.example.commerce.catalog.core.domain.entity.basket.Basket.ProductNotFoundInBasket;
 import com.example.commerce.catalog.core.domain.entity.product.Price;
 import com.example.commerce.catalog.core.domain.entity.product.Product;
 
 public class BasketExceptionHandlingTest {
 	
-	private static final String CUSTOMER_ID = "customer";
+	private static final long CUSTOMER_ID = 1L;
 	private static final String CURRENCY = "EUR";
 	private Basket basket;
 	
@@ -33,7 +33,7 @@ public class BasketExceptionHandlingTest {
 		basket = BasketFactory.createEmptyBasketFor(CUSTOMER_ID, CURRENCY);		
 	}
 	
-	@Test(expected = ProductNotFound.class)
+	@Test(expected = ProductNotFoundInBasket.class)
 	public void removeNonExistingItem() throws Exception {
 		basket.remove(product);
 	}

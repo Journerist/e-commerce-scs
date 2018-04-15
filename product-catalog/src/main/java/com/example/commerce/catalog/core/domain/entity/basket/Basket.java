@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.AbstractAggregateRoot;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import com.example.commerce.catalog.core.domain.entity.product.Price;
 import com.example.commerce.catalog.core.domain.entity.product.Product;
@@ -22,10 +23,13 @@ public class Basket extends AbstractAggregateRoot<Basket> {
     @Id
     private String id;
     private List<ProductLineItem> productLineItems = new ArrayList<>();
-    private String customerId;
+    
+    @Indexed
+    private long customerId;
+    
     private String currency;
     
-    public Basket(String id, List<ProductLineItem> productLineItems, String customerId, String currency) {
+    public Basket(String id, List<ProductLineItem> productLineItems, long customerId, String currency) {
     		this.id = id;
     		this.productLineItems = new ArrayList<>(productLineItems);
     		this.customerId = customerId;
@@ -58,7 +62,7 @@ public class Basket extends AbstractAggregateRoot<Basket> {
 		Optional<ProductLineItem> pli = getProductLineItemInBasketBy(product);
 		
 		if(!pli.isPresent()) {
-			throw new ProductNotFound(product);
+			throw new ProductNotFoundInBasket(product);
 		}
 		
 		if(pli.isPresent()) {
@@ -90,9 +94,9 @@ public class Basket extends AbstractAggregateRoot<Basket> {
 	}
 	
 	@SuppressWarnings("serial") // will never be serialised
-	public static class ProductNotFound extends RuntimeException {
+	public static class ProductNotFoundInBasket extends RuntimeException {
 
-		public ProductNotFound(Product product) {
+		public ProductNotFoundInBasket(Product product) {
 			super("Product coudlt not be removed from basket: " + product.toString());
 		}
 		

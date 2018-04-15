@@ -2,11 +2,13 @@ package com.example.commerce.catalog.core.domain.entity.product;
 
 import java.math.BigDecimal;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
 @Value
 @Builder
+@AllArgsConstructor
 public class Price {
 
     private final BigDecimal amount;
