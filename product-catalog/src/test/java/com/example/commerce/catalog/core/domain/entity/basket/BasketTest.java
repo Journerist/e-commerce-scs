@@ -147,5 +147,24 @@ public class BasketTest {
 		
 		assertEquals(product.getPrice().add(product.getPrice()), basket.caluclate());
 	}
+	
+	@Test
+	public void oneItemThreeTimesInBasket_removeOneCalculate_isSumOfTwoItems() throws Exception {
+		Product product = Product.builder()
+			.sku("SKU1")
+			.price(Price.builder()
+					.amount(new BigDecimal("10.00"))
+					.currency(CURRENCY)
+					.build())
+			.available(true)
+			.productCategory(ProductCategory.CLOTH)
+			.build();
+		basket.add(product);
+		basket.add(product);
+		basket.add(product);
+		basket.remove(product);
+		
+		assertEquals(product.getPrice().add(product.getPrice()), basket.caluclate());
+	}
 
 }
