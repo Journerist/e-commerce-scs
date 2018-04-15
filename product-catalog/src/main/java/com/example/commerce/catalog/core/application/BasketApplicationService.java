@@ -86,6 +86,7 @@ public class BasketApplicationService {
 		return basketToMap;
 	}
 	
+	@SuppressWarnings("serial") // never serialised
 	public static final class ProductNotFoundInShop extends RuntimeException {
 		public ProductNotFoundInShop(String sku) {
 			super("Product with sku '" + sku + "' does not exist");
