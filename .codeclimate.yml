@@ -3,6 +3,9 @@ engines:
     enabled: true
     config:
       sonar.java.source: 8
+    checks:
+      squid:S1068: # unused private attribute, wrong detected for lombok generated classes
+        enabled: false
   pmd:
     enabled: true
   checkstyle:

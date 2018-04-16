@@ -36,7 +36,7 @@ public class DemoApplication {
     private static Logger log = LoggerFactory.getLogger(DemoApplication.class);
 
     @PostConstruct
-    public void beforeStartup() throws Exception {
+    public void beforeStartup() {
         if (env.acceptsProfiles("dev")) {
             log.info("Dev profile is active, check if there is a running kafka server...");
             IntegratedKafkaServer.startIfNoServerIsRunning();

@@ -1,7 +1,5 @@
 package com.example.commerce.catalog.core.application.dto;
 
-import com.example.commerce.catalog.core.domain.entity.product.Price;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,6 @@ public class ProductLineItemDTO {
     private String sku;
     private String name;
     private int amount;
-    private Price price;
+    private PriceDTO price;
 
 }

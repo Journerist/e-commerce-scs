@@ -18,7 +18,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false, of = { "id" })
-public class Basket extends AbstractAggregateRoot<Basket> {
+public final class Basket extends AbstractAggregateRoot<Basket> {
 
     @Id
     private String id;
@@ -78,20 +78,9 @@ public class Basket extends AbstractAggregateRoot<Basket> {
 		
 		if(!pli.isPresent()) {
 			throw new ProductNotFoundInBasket(product);
+		} else {
+			removeOrDecrease(pli.get());	
 		}
-		
-		if(pli.isPresent()) {
-			productLineItems.remove(pli.get());
-			
-			int currentPliAmount = pli.get().getAmount();
-			if(currentPliAmount > 1) {
-				ProductLineItem pliWithDecreasedAmount = pli.get().createBuilderFromInstance()
-					.amount(currentPliAmount - 1)
-					.build();
-				productLineItems.add(pliWithDecreasedAmount);
-			}
-		}
-		productLineItems.remove(ProductLineItem.from(product));
 	}
 
 	public Price caluclate() {
@@ -99,6 +88,18 @@ public class Basket extends AbstractAggregateRoot<Basket> {
 					.map(pli -> pli.getPrice().multiply(pli.getAmount()))
 					.reduce( (price1, price2) -> price1.add(price2))
 					.orElse(Price.builder().amount(BigDecimal.ZERO).currency(currency).build());
+	}
+
+	private void removeOrDecrease(ProductLineItem pli) {
+		productLineItems.remove(pli);
+		
+		int currentPliAmount = pli.getAmount();
+		if(currentPliAmount > 1) {
+			ProductLineItem pliWithDecreasedAmount = pli.createBuilderFromInstance()
+				.amount(currentPliAmount - 1)
+				.build();
+			productLineItems.add(pliWithDecreasedAmount);
+		}
 	}
 	
 	private Optional<ProductLineItem> getProductLineItemInBasketBy(Product product) {
