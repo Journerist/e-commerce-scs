@@ -43,13 +43,13 @@ public final class Basket extends AbstractAggregateRoot<Basket> {
     /**
      * Removes a product from basket
      * 
-     * DDD: For different reasons entities and value objects of other aggregates
+     * <p>DDD: For different reasons entities and value objects of other aggregates
      * should only store ids to other root entities. In this case a product line
      * item is created that is kind of a copy or at least a very similar thing. It's
      * a good example for duplicating logic instead of linking them together (non
      * ddd approach) or to create bigger aggregates that allows object references.
      * 
-     * For several reason there is something like an product line item in the basket
+     * <p>For several reason there is something like an product line item in the basket
      * for ages, long before DDD was invented. People made this decision based upon
      * experiences. In non explored field DDD guidelines like not storing object
      * references to non aggregates entities or value objects in combination with

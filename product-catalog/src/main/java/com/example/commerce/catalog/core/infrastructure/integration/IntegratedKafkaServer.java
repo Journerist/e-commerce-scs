@@ -2,6 +2,7 @@ package com.example.commerce.catalog.core.infrastructure.integration;
 
 import java.net.Socket;
 
+import org.springframework.jmx.access.InvalidInvocationException;
 import org.springframework.kafka.test.rule.KafkaEmbedded;
 
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,10 @@ public class IntegratedKafkaServer {
 
     private static final int KAFKA_SERVER_PORT = 9092;
 
+    private IntegratedKafkaServer() {
+        throw new InvalidInvocationException("Instantiation is not allowed");
+    }
+    
     public static void startIfNoServerIsRunning() {
         if (!serverListening("localhost", KAFKA_SERVER_PORT)) {
             KafkaEmbedded embeddedKafka = new KafkaEmbedded(1, true, "test");

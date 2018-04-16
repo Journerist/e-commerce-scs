@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  * Sends global events to other contexts. These events usually contain data that
  * will be duplicated in their application to avoid runtime dependencies.
  * 
- * Domain events should never be sent to other services. They should be mapped
+ * <p>Domain events should never be sent to other services. They should be mapped
  * to an service event to avoid core domain event coupling to external apis.
  * 
  * @author Sebastian Barthel
@@ -22,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 public class KafkaServiceEventSender {
 
     private final KafkaOperations<String, String> kafka;
-//    private final ObjectMapper mapper;
 
     /**
      * TODO: remove this on listener because it sends all events to kafka. Only a
