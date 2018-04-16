@@ -14,16 +14,16 @@ public class Price {
     private final BigDecimal amount;
     private final String currency;
 
-    public Price add(Price p) {
+    public Price add(Price price) {
     		return Price.builder()
-    				.amount(this.amount.add(p.getAmount()))
+    				.amount(this.amount.add(price.getAmount()))
     				.currency(this.currency)
     				.build();
     }
 
-	public Price multiply(int i) {
+	public Price multiply(int number) {
 		return Price.builder()
-				.amount(this.amount.multiply(new BigDecimal(i)))
+				.amount(this.amount.multiply(new BigDecimal(number)))
 				.currency(this.currency)
 				.build();
 	}

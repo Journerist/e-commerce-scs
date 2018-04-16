@@ -15,6 +15,12 @@ public final class ProductLineItem {
     private final int amount;
     private final Price price;
     
+    /**
+     * Create a single product line item instance of a product.
+     * 
+     * @param product
+     * @return
+     */
 	public static ProductLineItem from(Product product) {
 		return ProductLineItem.builder()
 				.amount(1)
@@ -24,9 +30,9 @@ public final class ProductLineItem {
 				.build(); 
 	}
 
-	public ProductLineItem increase(int i) {
+	public ProductLineItem increase(int number) {
 		return this.createBuilderFromInstance()
-				.amount(amount + i)
+				.amount(amount + number)
 				.build();
 		
 	}
