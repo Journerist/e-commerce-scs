@@ -8,8 +8,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -27,9 +30,10 @@ import com.example.commerce.catalog.core.infrastructure.DemoApplication;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@ContextConfiguration(classes = {DemoApplication.class})
+@SpringBootTest(classes = {DemoApplication.class})
+@DataMongoTest
 @EnableMongoRepositories(basePackageClasses = {CustomerRepository.class, BasketRepository.class})
+@DirtiesContext
 public class BasketApplicationServiceTest {
 
 	private BasketApplicationService basketService;
